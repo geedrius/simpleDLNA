@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using log4net;
 
 namespace NMaier.SimpleDlna.Utilities
@@ -29,7 +30,9 @@ namespace NMaier.SimpleDlna.Utilities
 
     private void Finish(StreamPumpResult result, StreamPumpCallback callback)
     {
-      callback?.BeginInvoke(this, result, callback.EndInvoke, null);
+      if(callback != null) {
+        Task.Run(() => callback(this, result));
+      }
       try {
         sem.Release();
       }

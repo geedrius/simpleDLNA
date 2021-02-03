@@ -18,7 +18,6 @@ namespace NMaier.SimpleDlna.Utilities
 
     private readonly uint toDrop;
 
-    [CLSCompliant(false)]
     public LeastRecentlyUsedDictionary(uint capacity)
     {
       Capacity = capacity;
@@ -30,7 +29,6 @@ namespace NMaier.SimpleDlna.Utilities
     {
     }
 
-    [CLSCompliant(false)]
     public uint Capacity { get; }
 
     public int Count => items.Count;
